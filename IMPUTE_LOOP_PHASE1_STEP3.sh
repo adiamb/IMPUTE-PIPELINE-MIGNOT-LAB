@@ -17,5 +17,4 @@ echo \#$ -l h_rt=6:00:00 >>tmpchr"$1".$i.sh
 echo \#$ -w e >>tmpchr"$1".$i.sh
 echo $command >> tmpchr"$1".$i.sh
 qsub -V -cwd tmpchr"$1".$i.sh
-#rm tmpchr"$1".$i.sh
 done
