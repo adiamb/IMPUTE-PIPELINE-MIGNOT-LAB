@@ -1,6 +1,6 @@
 #!/bin/bash
 command="./shapeit --input-bed "$1"_CHR\$SGE_TASK_ID.bed "$1"_CHR\$SGE_TASK_ID.bim "$1"_CHR\$SGE_TASK_ID.fam \
--M /srv/gsfs0/projects/mignot/IMPUTE_REFERENCE_PHASE1/genetic_map_chr\$\S\G\E\_\T\A\S\K\_\I\D_combined_b37.txt \
+-M /srv/gsfs0/projects/mignot/IMPUTE_REFERENCE_PHASE1/genetic_map_chr\$SGE_TASK_ID\_combined_b37.txt \
 -O "$1"_CHR\$SGE_TASK_ID \
 -T 4"
 touch shapeit_array.sh
