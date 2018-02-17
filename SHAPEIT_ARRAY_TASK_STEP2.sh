@@ -5,7 +5,7 @@ command="./shapeit --input-bed "$1"_CHR\$SGE_TASK_ID.bed "$1"_CHR\$SGE_TASK_ID.b
 -T 4"
 touch shapeit_array.sh
 chmod 755 shapeit_array.sh
-cat shapeit_array.sh <<- EOF
+cat > shapeit_array.sh <<- EOF
 #\!/bin/bash
 #$ -N shapeit_array
 #$ -l h_vmem=10G
