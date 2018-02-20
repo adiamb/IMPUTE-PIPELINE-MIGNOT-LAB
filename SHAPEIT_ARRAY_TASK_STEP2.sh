@@ -5,12 +5,14 @@ command="./shapeit --input-bed "$1"_CHR\$SGE_TASK_ID.bed "$1"_CHR\$SGE_TASK_ID.b
 -T 4"
 touch shapeit_array.sh
 chmod 755 shapeit_array.sh
-echo \#\!/bin/bash >shapeit_array.sh
-echo \#$ -N shapeit_array >>shapeit_array.sh
-echo \#$ -l h_vmem=10G >>shapeit_array.sh
-echo \#$ -l h_rt=12:00:00 >>shapeit_array.sh
-echo \#$ -t 1-22 >>shapeit_array.sh
-echo \#$ -hold_jid PLINK_SPLIT_CHR >>shapeit_array.sh
-echo \#$ -pe shm 4 >>shapeit_array.sh
-echo $command >>shapeit_array.sh
+cat > shapeit_array.sh <<- EOF
+#\!/bin/bash
+#$ -N shapeit_array
+#$ -l h_vmem=10G
+#$ -l h_rt=12:00:00
+#$ -t 1-22
+#$ -hold_jid PLINK_SPLIT_CHR
+#$ -pe shm 4
+$command
+EOF
 qsub -V -cwd shapeit_array.sh
